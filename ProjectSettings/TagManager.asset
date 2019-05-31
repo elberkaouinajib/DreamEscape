@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Monster
   - Platform
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Monster
+  - Ground
   - 
   - 
   - 

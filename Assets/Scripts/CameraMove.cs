@@ -12,10 +12,7 @@ public class CameraMove : MonoBehaviour
     private void Start() {
         camera=GetComponent<Camera>();
     }
-    void Update()
-    {
-        camera.transform.position=camera.transform.position + (new Vector3(0.05f,0,0));
-    }
+    void Update() => camera.transform.position = camera.transform.position + (new Vector3(0.05f, 0, 0));
     private void LateUpdate() {
          Vector3 v3 = transform.position;
          v3.y = Mathf.Lerp (v3.y, player.transform.position.y, speed);
