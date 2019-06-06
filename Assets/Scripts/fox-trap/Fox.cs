@@ -34,7 +34,6 @@ public class Fox : MonoBehaviour {
 
 
     private void Update() {
-        Debug.Log(Math.Abs(rb.velocity.x));
         if(Math.Abs(rb.velocity.x) <= maxSpeed){
             rb.AddForce(transform.right * speed);
         }
@@ -45,14 +44,13 @@ public class Fox : MonoBehaviour {
         if(isInWall().collider != null){
             Flip();
         }
-        /* if(!isGround()){
-            Flip();
-        }*/
+
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player"){
-            GameOverDetect.GameOver();
+            Debug.Log("Dead");
+            GameManager.Instance.GameOver();
         }
     }
 }

@@ -21,7 +21,7 @@ public class CameraMove : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other) {
         if(other.gameObject==player)
-            GameOverDetect.GameOver();
+            GameManager.Instance.GameOver();
     }
 
 }
