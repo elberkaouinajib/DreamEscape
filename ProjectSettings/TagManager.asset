@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Monster
   - Platform
+  - ButtonOption
   layers:
   - Default
   - TransparentFX
