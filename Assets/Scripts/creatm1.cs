@@ -11,10 +11,28 @@ public class creatm1 : MonoBehaviour
     private bool playerIsInTrap = false;
     float timer=0;
     float waitTime=5.0f;
+
+
+     [System.Serializable] public enum BatType
+     {
+          Normal,Crazy
+     }
+
+	[SerializeField]
+	float moveSpeed = 6f;
+
+	[SerializeField]
+	float frequency = 10f;
+
+	[SerializeField]
+	float magnitude = 1f;
+
+     public BatType batType;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -24,7 +42,15 @@ public class creatm1 : MonoBehaviour
         {
             timer+=Time.deltaTime;
             if(timer>=waitTime){
-                Instantiate(m1,spawner.position,Quaternion.identity);
+                m1Move bat= Instantiate(m1,spawner.position,Quaternion.identity).GetComponent<m1Move>();
+                bat.frequency=frequency;
+                bat.magnitude=magnitude;
+                bat.moveSpeed=moveSpeed;
+                switch (batType)
+                {
+                    case BatType.Crazy:bat.batMove="Crazy";break;
+                    default:bat.batMove="Normal";break;
+                }
                 timer=0;
             }
         }
