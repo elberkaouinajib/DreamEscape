@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class creatm1 : MonoBehaviour
+public class CreateBat : MonoBehaviour
 {
 
     public GameObject m1;
 
     public Transform spawner;
     private bool playerIsInTrap = false;
+    public float waitTime=1.0f;
     float timer=0;
-    float waitTime=5.0f;
 
 
      [System.Serializable] public enum BatType
@@ -42,7 +42,7 @@ public class creatm1 : MonoBehaviour
         {
             timer+=Time.deltaTime;
             if(timer>=waitTime){
-                m1Move bat= Instantiate(m1,spawner.position,Quaternion.identity).GetComponent<m1Move>();
+                Bat bat= Instantiate(m1,spawner.position,Quaternion.identity).GetComponent<Bat>();
                 bat.frequency=frequency;
                 bat.magnitude=magnitude;
                 bat.moveSpeed=moveSpeed;
@@ -73,7 +73,7 @@ public class creatm1 : MonoBehaviour
             Debug.Log("out");
           }
 
-        if(other.gameObject.tag=="Monster")
+        if(other.gameObject.tag=="Bat")
             Destroy(other.gameObject);
     
     }

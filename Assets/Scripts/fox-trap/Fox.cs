@@ -25,6 +25,7 @@ public class Fox : MonoBehaviour {
     }
 
     private RaycastHit2D isGround() {
+        Debug.DrawRay(groundTracker.position, -transform.up * rayCastDistance, Color.green);
         return Physics2D.Raycast(groundTracker.position, -transform.up, rayCastDistance, groundLayer);
     }
 

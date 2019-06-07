@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class m1Move : MonoBehaviour
+public class Bat : MonoBehaviour
 {
 
 
@@ -30,7 +30,7 @@ public class m1Move : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) {
          if(other.gameObject.tag=="Player")
-            GameOverDetect.GameOver();
+            GameManager.Instance.GameOver();
     }
 
     private void NormalMove(){

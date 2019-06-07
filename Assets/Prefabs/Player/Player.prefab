@@ -154,7 +154,7 @@ MonoBehaviour:
   airControl: 1
   groundLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1024
   distToGround: 1.5
 --- !u!70 &1492824514851818729
 CapsuleCollider2D:
