@@ -8,7 +8,7 @@ public class Fox : MonoBehaviour {
     public float speed = 1f;
     public float  maxSpeed = 1f;
 
-    public LayerMask layer;
+    public LayerMask groundLayer;
     private Rigidbody2D rb;
 
 
@@ -25,11 +25,11 @@ public class Fox : MonoBehaviour {
     }
 
     private RaycastHit2D isGround() {
-        return Physics2D.Raycast(groundTracker.position, -transform.up, rayCastDistance, layer);
+        return Physics2D.Raycast(groundTracker.position, -transform.up, rayCastDistance, groundLayer);
     }
 
     private RaycastHit2D isInWall() {
-        return Physics2D.Raycast(groundTracker.position, transform.right, 1, layer);
+        return Physics2D.Raycast(groundTracker.position, transform.right, 1, groundLayer);
     }
 
 
