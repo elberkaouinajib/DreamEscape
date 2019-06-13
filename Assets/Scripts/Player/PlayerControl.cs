@@ -2,35 +2,45 @@ using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-namespace UnityStandardAssets._2D
+
+[RequireComponent(typeof (PlayerMove))]
+public class PlayerControl : MonoBehaviour
 {
-    [RequireComponent(typeof (PlayerMove))]
-    public class PlayerControl : MonoBehaviour
+    private PlayerMove character;
+
+    private Animator playerAnim;
+    private bool jump;
+    private bool isDead = false;
+
+
+    private void Awake()
     {
-        private PlayerMove character;
-        private bool jump;
+        character = GetComponent<PlayerMove>();
+        playerAnim = GetComponent<Animator>();
+    }
 
 
-        private void Awake()
+    private void Update()
+    {
+        if (!jump && !isDead)
         {
-            character = GetComponent<PlayerMove>();
+            jump = CrossPlatformInputManager.GetButtonDown("Jump");
         }
+    }
 
 
-        private void Update()
-        {
-            if (!jump)
-            {
-                jump = CrossPlatformInputManager.GetButtonDown("Jump");
-            }
-        }
-
-
-        private void FixedUpdate()
-        {
+    private void FixedUpdate()
+    {
+        if(!isDead){
             float h = CrossPlatformInputManager.GetAxis("Horizontal");
             character.Move(h,jump);
             jump = false;
         }
     }
+
+    public void Die(){
+        playerAnim.SetTrigger("Dead");
+        isDead = true;
+    }
 }
+
