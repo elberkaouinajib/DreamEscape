@@ -5,6 +5,7 @@ using UnityEngine;
 public class Fox : MonoBehaviour {
 
     public Transform groundTracker;
+    public Transform wallTracker;
     public float speed = 1f;
     public float  maxSpeed = 1f;
 
@@ -30,7 +31,9 @@ public class Fox : MonoBehaviour {
     }
 
     private RaycastHit2D isInWall() {
-        return Physics2D.Raycast(groundTracker.position, transform.right, 1, groundLayer);
+        bool inWall = Physics2D.Raycast(wallTracker.position, transform.right, 1, groundLayer);
+        Debug.DrawRay(wallTracker.position, transform.right* 1,Color.blue);
+        return Physics2D.Raycast(wallTracker.position, transform.right, 1, groundLayer);
     }
 
 
