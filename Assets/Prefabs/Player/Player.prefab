@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5414642962315104728}
   - component: {fileID: 8033117490802506181}
   - component: {fileID: 1492824514851818729}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -149,13 +149,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c56de9c3746544380e883d9f2f9698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 20
+  maxSpeed: 15
   jumpForce: 700
   airControl: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 1024
-  distToGround: 1.5
+  distToGround: 0.8
 --- !u!70 &1492824514851818729
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

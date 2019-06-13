@@ -14,8 +14,9 @@ public class PlayerMove : MonoBehaviour {
     private bool lookAtRight = true;
 
     public bool isGrounded(){
-        Debug.DrawRay(transform.position, -Vector3.up * (distToGround + 0.1f) , Color.green);
-        return Physics2D.Raycast(transform.position, -Vector3.up, distToGround, groundLayer);
+        bool grounded = Physics2D.Raycast(transform.position, -Vector3.up, distToGround, groundLayer);
+        Debug.DrawRay(transform.position, -Vector3.up * (distToGround + 0.1f) , grounded?Color.green: Color.red);
+        return grounded;
     }
 
     void Start()
@@ -27,7 +28,6 @@ public class PlayerMove : MonoBehaviour {
     private void Update() {
          animator.SetFloat("vSpeed", rb.velocity.y);
          animator.SetBool("Ground", isGrounded());
-
     }
 
     private void Flip()

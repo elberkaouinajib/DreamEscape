@@ -718,7 +718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 35640605}
-  speed: 1
+  speed: 0.1
 --- !u!1 &746783076
 GameObject:
   m_ObjectHideFlags: 0
@@ -4536,6 +4536,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2616726614045993101, guid: d96b1cea6bff56344af335da92ffa33a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2616726614045766829, guid: d96b1cea6bff56344af335da92ffa33a,
         type: 3}

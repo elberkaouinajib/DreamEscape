@@ -13,7 +13,7 @@ public class Bat : MonoBehaviour
 	public float magnitude = 1f;
 
 
-    public string batMove;
+     public string batMove;
      Vector3 pos;
      private void Start() {
           pos=transform.position;
