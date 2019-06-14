@@ -43,3 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf78687a52a322d428e82f55fd5e1163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  deadDuration: 2
+  coinsText: {fileID: 0}
+  winScreen: {fileID: 0}

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightsCollect : MonoBehaviour
+public class LightCollect : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,5 +14,13 @@ public class LightsCollect : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "Player"){
+            GameManager.Instance.AddCoins();
+            Destroy(gameObject);
+        }
     }
 }

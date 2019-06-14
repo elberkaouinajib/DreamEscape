@@ -16,7 +16,7 @@ public class PlayerControl : MonoBehaviour
     private void Awake()
     {
         character = GetComponent<PlayerMove>();
-        playerAnim = GetComponent<Animator>();
+        playerAnim = character.GetComponent<Animator>();
     }
 
 
@@ -31,11 +31,9 @@ public class PlayerControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!isDead){
-            float h = CrossPlatformInputManager.GetAxis("Horizontal");
-            character.Move(h,jump);
-            jump = false;
-        }
+        float h = CrossPlatformInputManager.GetAxis("Horizontal");
+        character.Move(h,jump, isDead);
+        jump = false;
     }
 
     public void Die(){

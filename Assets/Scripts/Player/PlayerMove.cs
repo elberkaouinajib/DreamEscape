@@ -37,32 +37,37 @@ public class PlayerMove : MonoBehaviour {
         transform.Rotate(new Vector3(0,180,0));
     }
 
-    public void Move(float move, bool jump){
+    public void Move(float move, bool jump, bool isDead){
 
-        bool grounded = isGrounded();
+        if(isDead){
+            rb.velocity = new Vector2(0,rb.velocity.y);
+        }else{
+            bool grounded = isGrounded();
 
-        if (grounded || airControl)
-        {
-            move = airControl?move /2: move;
-
-            rb.velocity = new Vector2(move*maxSpeed, rb.velocity.y);
-            animator.SetFloat("Speed", Mathf.Abs(move));
-
-            if (move > 0 &&  !lookAtRight)
+            if (grounded || airControl)
             {
-                Flip();
+                move = airControl?move /2: move;
+
+                rb.velocity = new Vector2(move*maxSpeed, rb.velocity.y);
+                animator.SetFloat("Speed", Mathf.Abs(move));
+
+                if (move > 0 &&  !lookAtRight)
+                {
+                    Flip();
+                }
+                else if (move < 0 &&  lookAtRight)
+                {
+                    Flip();
+                }
             }
-            else if (move < 0 &&  lookAtRight)
+
+            if (grounded && jump)
             {
-                Flip();
+                animator.SetBool("Ground", false);
+                rb.AddForce(new Vector2(0f, jumpForce));
             }
         }
 
-        if (grounded && jump)
-        {
-            animator.SetBool("Ground", false);
-            rb.AddForce(new Vector2(0f, jumpForce));
-        }
     }
 
 }

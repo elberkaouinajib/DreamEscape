@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2119862862189804569}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.19, y: -0.61, z: 0}
+  m_LocalPosition: {x: -0.042, y: -0.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2616726614045766829}
@@ -104,7 +104,7 @@ SpriteRenderer:
   m_SortingLayerID: -1783731295
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 2779023822413464520, guid: 1beadbb4dc354f34a97f228fbe30887e,
+  m_Sprite: {fileID: 3189501009871143723, guid: cd5bc6eb8738d0b42b57091979139aee,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -151,7 +151,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3c55a459e3c0588418f374bdf0c023a5, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -180,8 +180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c56de9c3746544380e883d9f2f9698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 15
-  jumpForce: 1000
+  maxSpeed: 11
+  jumpForce: 600
   airControl: 1
   groundLayer:
     serializedVersion: 2
@@ -201,6 +201,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.21284199, y: -0.077108264}
-  m_Size: {x: 0.3587513, y: 1.2787158}
+  m_Offset: {x: -0.020041704, y: -0.077108264}
+  m_Size: {x: 0.26976633, y: 1.2787158}
   m_Direction: 0
