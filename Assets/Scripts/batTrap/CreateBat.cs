@@ -8,7 +8,7 @@ public class CreateBat : MonoBehaviour
     public GameObject m1;
 
     public Transform spawner;
-    private bool playerIsInTrap = false;
+    public bool playerIsInTrap = false;
     public float waitTime=1.0f;
     float timer=0;
 

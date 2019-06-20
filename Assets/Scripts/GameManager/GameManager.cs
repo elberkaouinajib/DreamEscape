@@ -8,51 +8,91 @@ using TMPro;
 public class GameManager : MonoBehaviour {
     public static GameManager Instance = null;
 
-    public GameObject player;
+    private GameObject player;
+
+    public string[] scenes;
+    private int sceneIndex = 0;
 
     public float deadDuration = 2;
 
-    private PlayerControl playerControl;
+    public PlayerControl playerControl;
 
     private int coins;
-    public TextMeshProUGUI coinsText;
+    private TextMeshProUGUI coinsText;
 
-    public GameObject winScreen;
-
+    private GameObject winScreen;
+    
     void Start(){
-        
+        Init();
+    }
+
+    void Update(){}
+
+    void Init(){
+        player = GameObject.FindWithTag("Player");
+        Debug.Log(player.name);
+        playerControl = player.GetComponent<PlayerControl>();
+        Debug.Log(playerControl);
+        coinsText = GameObject.Find("LightNumber").GetComponent<TextMeshProUGUI>();
+        winScreen = GameObject.Find("WinScreen");
+        SetCoins();
+    }
+
+    void SetCoins(){
+        coinsText.text = "" + coins;
     }
 
     public void AddCoins(){
         coins +=1;
-        coinsText.text = "" + coins;
+        SetCoins();
+    }
+
+    public void RemoveCoins(){
+        coins -=1;
+        SetCoins();
     }
 
     void Awake()
     {
         if(Instance == null){
             Instance = this;
-            //DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject);
         }else{
             Destroy(gameObject);
         }
     }
 
     public void GameOver(bool withAnimation=true){
-        playerControl = player.GetComponent<PlayerControl>();
         StartCoroutine(_GameOver(withAnimation));
         
     }
 
     IEnumerator _GameOver(bool withAnimation)
     {
-        playerControl.Die();
+        if(withAnimation){
+            if(!player)
+                player = GameObject.FindWithTag("Player");
+            if(!playerControl){
+                playerControl = player.GetComponent<PlayerControl>();
+            }
+
+            playerControl.Die();
+        }
         yield return new WaitForSeconds(withAnimation?deadDuration:0);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Debug.Log("Loading");
+        Init();
     }
 
     public void NextLevel(){
-        //temporary
-        winScreen.SetActive(true);
+       
+        if(sceneIndex + 1 < scenes.Length){
+            sceneIndex ++;
+            SceneManager.LoadScene(sceneName: scenes[sceneIndex]);
+        }else if(winScreen){
+            winScreen.SetActive(true);
+            Time.timeScale = 0f;
+        }
+
     }
 }

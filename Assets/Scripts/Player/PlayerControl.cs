@@ -12,10 +12,9 @@ public class PlayerControl : MonoBehaviour
     private bool jump;
     private bool isDead = false;
 
-
-    private void Awake()
-    {
+    private void Start(){
         character = GetComponent<PlayerMove>();
+        Debug.Log("YOLOOOO");
         playerAnim = character.GetComponent<Animator>();
     }
 

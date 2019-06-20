@@ -24,7 +24,6 @@ ExportedObj/
 *.pdb
 *.opendb
 *.vscode
-*.unity
 *.meta
 
 # Unity3D generated meta files
@@ -38,3 +37,5 @@ sysinfo.txt
 *.apk
 *.unitypackage
 Assets/Cours/
+
+Assets/TextMesh Pro/Examples & Extras/

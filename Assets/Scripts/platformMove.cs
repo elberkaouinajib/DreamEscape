@@ -8,6 +8,8 @@ public class platformMove : MonoBehaviour
     public GameObject endObject;
     public bool autoMove = true;
 
+    public bool stopAtEnd = false;
+
     private float timer = 0.0f;
     public Vector3 desiredPos;
 
@@ -24,7 +26,11 @@ public class platformMove : MonoBehaviour
         if (autoMove)
         {
             timer += Time.deltaTime;
-            transform.position = Vector3.Lerp(originalPos, desiredPos, Mathf.PingPong(timer * speed, 1.0f));
+            if(!stopAtEnd){
+                transform.position = Vector3.Lerp(originalPos, desiredPos, Mathf.PingPong(timer * speed, 1.0f));
+            }else{
+                transform.position = Vector3.Lerp(originalPos, desiredPos, timer * speed);
+            }
         }
 
     }
