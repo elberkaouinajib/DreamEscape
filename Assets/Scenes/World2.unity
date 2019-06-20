@@ -411,6 +411,11 @@ PrefabInstance:
       propertyPath: winScreen
       value: 
       objectReference: {fileID: 1437422996}
+    - target: {fileID: 6481968228940750977, guid: 5d344f48e65ddf44c90156f31310b605,
+        type: 3}
+      propertyPath: sceneIndex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d344f48e65ddf44c90156f31310b605, type: 3}
 --- !u!1 &705507993
@@ -486,7 +491,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 20, y: 20, z: 0, w: 4.132}
+  m_BoundingSphereOverride: {x: 0.13, y: 0.22, z: 0.14, w: 0.14}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -515,6 +520,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1639374699, guid: cd0d1a06cfe7a7f41b5b5afd8ff117ec, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1422858050537878973, guid: cd0d1a06cfe7a7f41b5b5afd8ff117ec,
         type: 3}
@@ -619,6 +628,10 @@ PrefabInstance:
     - target: {fileID: 1422858050537878973, guid: cd0d1a06cfe7a7f41b5b5afd8ff117ec,
         type: 3}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1639374701, guid: cd0d1a06cfe7a7f41b5b5afd8ff117ec, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -851,12 +864,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2226564197508618651, guid: fb21c7e39d5ffed4baa0de2df61f6a1b,
-        type: 3}
-      propertyPath: m1
-      value: 
-      objectReference: {fileID: 1511567237740037923, guid: 6be0ccef23f62b742a22db7f50175dd5,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb21c7e39d5ffed4baa0de2df61f6a1b, type: 3}
 --- !u!1001 &1909694595574773817

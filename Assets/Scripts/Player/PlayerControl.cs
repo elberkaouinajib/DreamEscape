@@ -14,7 +14,6 @@ public class PlayerControl : MonoBehaviour
 
     private void Start(){
         character = GetComponent<PlayerMove>();
-        Debug.Log("YOLOOOO");
         playerAnim = character.GetComponent<Animator>();
     }
 

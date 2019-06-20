@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
     private GameObject player;
 
     public string[] scenes;
-    private int sceneIndex = 0;
+    public int sceneIndex = 0;
 
     public float deadDuration = 2;
 
@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour {
     private int coins;
     private TextMeshProUGUI coinsText;
 
-    private GameObject winScreen;
+    Image winScreen;
     
     void Start(){
         Init();
@@ -30,11 +30,10 @@ public class GameManager : MonoBehaviour {
 
     void Init(){
         player = GameObject.FindWithTag("Player");
-        Debug.Log(player.name);
         playerControl = player.GetComponent<PlayerControl>();
-        Debug.Log(playerControl);
         coinsText = GameObject.Find("LightNumber").GetComponent<TextMeshProUGUI>();
-        winScreen = GameObject.Find("WinScreen");
+        winScreen = GameObject.Find("WinScreen").GetComponent<Image>();
+        Debug.Log(winScreen);
         SetCoins();
     }
 
@@ -70,17 +69,21 @@ public class GameManager : MonoBehaviour {
     IEnumerator _GameOver(bool withAnimation)
     {
         if(withAnimation){
-            if(!player)
+            /*if(!player)
                 player = GameObject.FindWithTag("Player");
             if(!playerControl){
                 playerControl = player.GetComponent<PlayerControl>();
-            }
+            }*/
 
             playerControl.Die();
         }
         yield return new WaitForSeconds(withAnimation?deadDuration:0);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Debug.Log("Loading");
+        AsyncOperation loaded = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+        while(!loaded.isDone){
+            yield return null;
+        }
+        // Wait a frame so every Awake and Start method is called
+        yield return new WaitForEndOfFrame();
         Init();
     }
 
@@ -90,7 +93,8 @@ public class GameManager : MonoBehaviour {
             sceneIndex ++;
             SceneManager.LoadScene(sceneName: scenes[sceneIndex]);
         }else if(winScreen){
-            winScreen.SetActive(true);
+            Debug.Log("WIN");
+            winScreen.enabled = true;
             Time.timeScale = 0f;
         }
 
