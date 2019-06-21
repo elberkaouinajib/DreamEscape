@@ -25,9 +25,22 @@ public class GameManager : MonoBehaviour {
     private Portal portal;
 
     public int lightsToNeed = 2;
+
+    public bool cheat = false;
+    private bool deadInProgress = false;
     
     void Start(){
         Init();
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            coins = 0;
+            sceneIndex = 0;
+            Time.timeScale = 1f;
+            StartCoroutine(LoadScene(scenes[0]));
+        }
     }
 
     void Init(){
@@ -49,12 +62,6 @@ public class GameManager : MonoBehaviour {
         portal.UpdateText(coins, lightsToNeed);
     }
 
-    public void RemoveCoins(){
-        coins -=1;
-        SetCoins();
-        portal.UpdateText(coins, lightsToNeed);
-    }
-
     void Awake()
     {
         if(Instance == null){
@@ -66,25 +73,18 @@ public class GameManager : MonoBehaviour {
     }
 
     public void GameOver(bool withAnimation=true){
-        coins = 0;
-        StartCoroutine(_GameOver(withAnimation));
+        if(!deadInProgress){
+            deadInProgress = true;
+            coins = 0;
+            StartCoroutine(_GameOver(withAnimation));
+        }
         
     }
 
-    IEnumerator _GameOver(bool withAnimation)
-    {
-        if(withAnimation){
-            /*if(!player)
-                player = GameObject.FindWithTag("Player");
-            if(!playerControl){
-                playerControl = player.GetComponent<PlayerControl>();
-            }*/
-
-            playerControl.Die();
-        }
-        yield return new WaitForSeconds(withAnimation?deadDuration:0);
-        AsyncOperation loaded = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
-        while(!loaded.isDone){
+    IEnumerator LoadScene(string scene){
+        AsyncOperation loaded = SceneManager.LoadSceneAsync(scene);
+        while (!loaded.isDone)
+        {
             yield return null;
         }
         // Wait a frame so every Awake and Start method is called
@@ -92,13 +92,34 @@ public class GameManager : MonoBehaviour {
         Init();
     }
 
+    IEnumerator _GameOver(bool withAnimation)
+    {
+        if(!cheat){
+            if(withAnimation){
+                playerControl.Die();
+            }
+            yield return new WaitForSeconds(withAnimation?deadDuration:0);
+            deadInProgress = false;
+            StartCoroutine(LoadScene(SceneManager.GetActiveScene().name));
+            
+        }
+    }
+
+    void Win(){
+        //temporary
+        winScreen.enabled = true;
+        GameObject.Find("Main Camera").GetComponent<CameraMove>().enabled = false;
+        Time.timeScale = 0f;
+      
+
+    }
+
     public void NextLevel(){
         if(sceneIndex + 1 < scenes.Length){
             sceneIndex ++;
             SceneManager.LoadScene(sceneName: scenes[sceneIndex]);
         }else if(winScreen){
-            winScreen.enabled = true;
-            Time.timeScale = 0f;
+            Win();
         }
 
     }

@@ -1393,6 +1393,16 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 8be6341e1ce3f4cec9902bc34f72d20a, type: 2}
+    - target: {fileID: 2245357812298409736, guid: fb21c7e39d5ffed4baa0de2df61f6a1b,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226564197508618651, guid: fb21c7e39d5ffed4baa0de2df61f6a1b,
+        type: 3}
+      propertyPath: waitTime
+      value: 3.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1274429502437637536, guid: fb21c7e39d5ffed4baa0de2df61f6a1b,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
