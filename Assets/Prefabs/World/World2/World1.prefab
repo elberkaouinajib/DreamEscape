@@ -580,7 +580,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.25662777, y: 1}
+    oldSize: {x: 0.08239658, y: 0.8125133}
     newSize: {x: 0.25662777, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -601,6 +601,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3debca6f125081499d74ec9784952f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  text: {fileID: 0}
+  portalActive: {fileID: 0}
 --- !u!1001 &5153799733330051945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -977,6 +980,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: portail-03
       objectReference: {fileID: 0}
+    - target: {fileID: 778555841887296155, guid: d0880a12ab61841e1ac6840691a015e2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Portal
+      objectReference: {fileID: 0}
     - target: {fileID: 5756140178406857956, guid: d0880a12ab61841e1ac6840691a015e2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1047,6 +1055,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.048445683
       objectReference: {fileID: 0}
+    - target: {fileID: 1427795280846548470, guid: d0880a12ab61841e1ac6840691a015e2,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3286163911610860551, guid: bfcabc0422d0ce14bb116439a71c18ac,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0880a12ab61841e1ac6840691a015e2, type: 3}
 --- !u!1 &6822427498973257316 stripped
@@ -1463,8 +1477,7 @@ PrefabInstance:
       propertyPath: high
       value: 1.5
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4644064930668214648, guid: b8c5f5b31703b0547b14b7bca2be0988, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8c5f5b31703b0547b14b7bca2be0988, type: 3}
 --- !u!1 &6385465004842009257 stripped
 GameObject:

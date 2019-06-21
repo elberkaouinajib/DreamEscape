@@ -21,34 +21,38 @@ public class GameManager : MonoBehaviour {
     private TextMeshProUGUI coinsText;
 
     Image winScreen;
+
+    private Portal portal;
+
+    public int lightsToNeed = 2;
     
     void Start(){
         Init();
     }
-
-    void Update(){}
 
     void Init(){
         player = GameObject.FindWithTag("Player");
         playerControl = player.GetComponent<PlayerControl>();
         coinsText = GameObject.Find("LightNumber").GetComponent<TextMeshProUGUI>();
         winScreen = GameObject.Find("WinScreen").GetComponent<Image>();
-        Debug.Log(winScreen);
+        portal = GameObject.FindWithTag("Portal").GetComponent<Portal>();
         SetCoins();
     }
 
     void SetCoins(){
-        coinsText.text = "" + coins;
+        coinsText.text = coins +"/" + lightsToNeed;
     }
 
     public void AddCoins(){
         coins +=1;
         SetCoins();
+        portal.UpdateText(coins, lightsToNeed);
     }
 
     public void RemoveCoins(){
         coins -=1;
         SetCoins();
+        portal.UpdateText(coins, lightsToNeed);
     }
 
     void Awake()
@@ -62,6 +66,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void GameOver(bool withAnimation=true){
+        coins = 0;
         StartCoroutine(_GameOver(withAnimation));
         
     }
@@ -88,12 +93,10 @@ public class GameManager : MonoBehaviour {
     }
 
     public void NextLevel(){
-       
         if(sceneIndex + 1 < scenes.Length){
             sceneIndex ++;
             SceneManager.LoadScene(sceneName: scenes[sceneIndex]);
         }else if(winScreen){
-            Debug.Log("WIN");
             winScreen.enabled = true;
             Time.timeScale = 0f;
         }
